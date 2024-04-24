@@ -7,6 +7,7 @@ import Layouts from 'vite-plugin-vue-layouts'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 export function setVitePlugins() {
   const plugins = [
@@ -18,7 +19,20 @@ export function setVitePlugins() {
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: ['vue', VueRouterAutoImports, 'pinia', '@vueuse/core'],
+      imports: [
+        'vue',
+        VueRouterAutoImports,
+        'pinia',
+        '@vueuse/core',
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar',
+          ],
+        },
+      ],
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/types/auto-imports.d.ts',
       dirs: [
@@ -32,7 +46,7 @@ export function setVitePlugins() {
     // https://github.com/antfu/unplugin-vue-components
     Components({
       dts: 'src/types/components.d.ts',
-      resolvers: [],
+      resolvers: [NaiveUiResolver()],
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
