@@ -19,11 +19,11 @@ export const menu = [
   {
     label: '在线换装',
     key: 'change-clothes',
-    path: '/about',
+    path: '/changeClothes',
   },
   {
-    label: '关于',
-    key: 'about',
-    path: '/about',
+    label: '函数式Modal',
+    key: 'functional-modal',
+    path: '/functionalModal',
   },
 ]

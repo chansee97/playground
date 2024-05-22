@@ -7,22 +7,24 @@ import { menu } from '@/menu'
 <template>
   <n-layout has-sider class="h-full">
     <n-layout-sider bordered width="240">
-      <div class="text-center p-2 text-1.5em">
-        🎈 Playground
-      </div>
+      <router-link to="/">
+        <n-h2 class="text-center p-2 cursor-pointer">
+          🎈 Playground
+        </n-h2>
+      </router-link>
       <n-menu
         :options="handleMenuOptions(menu)"
         accordion
       />
     </n-layout-sider>
     <n-layout>
-      <n-layout-content content-style="padding:8px;">
-        <n-config-provider :locale="zhCN" :date-locale="dateZhCN" class="h-full">
+      <n-layout-content content-style="padding:8px; height:100vh;">
+        <n-config-provider :locale="zhCN" :date-locale="dateZhCN" inline-theme-disabled class="h-full overflow-hidden">
           <n-dialog-provider>
             <n-notification-provider>
               <n-modal-provider>
                 <n-message-provider>
-                  <router-view v-slot="{ Component, route }" class="flex-1">
+                  <router-view v-slot="{ Component, route }" class="h-full flex-col-center ">
                     <transition
                       name="fade-scale"
                       mode="out-in"

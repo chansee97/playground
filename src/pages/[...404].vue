@@ -1,15 +1,15 @@
 <template>
-  <div class="h-full flex flex-col gap-2em justify-center items-center">
+  <div class="flex-col-center gap-2em">
     <span class="text-7xl">
       😵
     </span>
-    <h1 class="text-4xl text-gray-500 op-60">
+    <n-h1 class="text-4xl">
       404 | <span>Not Found</span>
-    </h1>
+    </n-h1>
     <router-link to="/">
-      <button>
+      <n-button>
         返回首页
-      </button>
+      </n-button>
     </router-link>
   </div>
 </template>

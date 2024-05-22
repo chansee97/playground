@@ -8,6 +8,9 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import IconsResolver from 'unplugin-icons/resolver'
 
 export function setVitePlugins() {
   const plugins = [
@@ -30,6 +33,7 @@ export function setVitePlugins() {
             'useMessage',
             'useNotification',
             'useLoadingBar',
+            'useModal',
           ],
         },
       ],
@@ -46,7 +50,27 @@ export function setVitePlugins() {
     // https://github.com/antfu/unplugin-vue-components
     Components({
       dts: 'src/types/components.d.ts',
-      resolvers: [NaiveUiResolver()],
+      resolvers: [
+        IconsResolver({
+          prefix: false,
+          customCollections: [
+            'svg-icons',
+          ],
+        }),
+        NaiveUiResolver(),
+      ],
+    }),
+
+    // auto import iconify's icons
+    Icons({
+      defaultStyle: 'display:inline-block',
+      compiler: 'vue3',
+      customCollections: {
+        'svg-icons': FileSystemIconLoader(
+          'src/assets/svg-icons',
+          svg => svg.replace(/^<svg /, '<svg fill="currentColor" width="1.2em" height="1.2em"'),
+        ),
+      },
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts

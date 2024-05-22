@@ -13,7 +13,9 @@
     "types": [
       "vite/client",
       "vite-plugin-vue-layouts/client",
-      "vite-plugin-pwa/client"
+      "vite-plugin-pwa/client",
+      "naive-ui/volar",
+      "unplugin-icons/types/vue"
     ],
     "allowJs": true,
     "strict": true,

@@ -16,7 +16,7 @@ function go() {
 </script>
 
 <template>
-  <div class="flex-center h-full flex-col gap-2em">
+  <div class="flex-col-center gap-2em">
     this is threejs page
     <div>
       <input v-model="name" type="text" placeholder="Enter your name" @keydown.enter="go">
