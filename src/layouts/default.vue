@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { dateZhCN, zhCN } from 'naive-ui'
 import { handleMenuOptions } from './helper'
+import OriginPage from './components/originPage.vue'
 import { menu } from '@/menu'
 </script>
 
@@ -19,6 +20,7 @@ import { menu } from '@/menu'
     </n-layout-sider>
     <n-layout>
       <n-layout-content content-style="padding:8px; height:100vh;">
+        <OriginPage />
         <n-config-provider :locale="zhCN" :date-locale="dateZhCN" inline-theme-disabled class="h-full overflow-hidden">
           <n-dialog-provider>
             <n-notification-provider>

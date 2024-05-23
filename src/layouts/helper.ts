@@ -15,7 +15,7 @@ export function handleMenuOptions(rowMenu) {
               { default: () => i.label },
             )
         : i.label,
-      key: i.key,
+      key: i.label,
       children: i.children && handleMenuOptions(i.children),
     }
   })
