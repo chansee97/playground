@@ -1,54 +1,11 @@
 <div align='center'>
-  <img src="/public/favicon.svg" width="150"/>
+  <h1>Playground</h1>
 </div>
 
 <div align='center'>
-  <h1>vite-vue3-starter</h1>
-  <h4>Virtuoso</h4>
+  <a href="https://rock-playground.netlify.app/">Live Demo</a>
 </div>
 
-<div align='center' >
-  A quick start template for a vue3 project, based on Vite, Unocss
-</div>
+这是一个测试和使用框架的游乐场。
 
-<div align='center'>
-  <a href="https://virtuoso.vercel.app">Live Demo</a>
-</div>
-
-<div align='center'>
-
-  <b>English</b> | [简体中文](./README.zh-CN.md)
-</div>
-
-## Features
-
-- Support TypeScript, TSX
-- Simple-git-hooks + lint-staged + eslint + stylelint
-- File based routing and layouts
-- Functionally wrapped [Axios](https://github.com/axios/axios)
-- [Unocss](https://unocss.dev/) - the instant on-demand atomic CSS engine
-- PWA Support
-- State Management via [Pinia](https://pinia.vuejs.org/)
-- [Use icons from any icon sets with classes](https://unocss.dev/presets/icons)
-- Dark mode adaptation
-- [Components auto importing](./src/components)
-- [APIs auto importing](https://github.com/antfu/unplugin-auto-import) - use Composition API and others directly
-
-## Usage
-
-### GitHub Template
-
-[Create a repo from this template on GitHub.](https://github.com/chansee97/vite-vue3-starter/generate)
-
-### Development
-
-```bash
-# clone
-git clone https://github.com/chansee97/vite-vue3-starter.git
-# Installation of dependencies
-pnpm i
-# Development visit http://localhost:5200
-pnpm dev
-# Build
-pnpm build
-```
+包含一些技术和效果方面的尝试，但是不会到达生产级别，只会进行了解原理层面的实践，如果有需要可以单独提出进行扩展
