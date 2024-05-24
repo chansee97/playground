@@ -10,10 +10,10 @@ const originPath = computed(() => {
   <n-tooltip trigger="hover" placement="top">
     <template #trigger>
       <n-button
-        tag="a"
+        tag="a" type="info"
         :href="originPath"
         target="_blank"
-        class="fixed bottom-4 right-50%"
+        class="fixed bottom-4 right-50% z-99"
       >
         <template #icon>
           <n-icon><icon-park-outline-github /></n-icon>

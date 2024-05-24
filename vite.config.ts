@@ -4,7 +4,7 @@ import { defineConfig, loadEnv } from 'vite'
 import { setVitePlugins } from './vite.plugins'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ _command, mode }: ConfigEnv) => {
+export default defineConfig(({ mode }: ConfigEnv) => {
   // 在开发环境下 command 的值为 serve 生产环境下为 build
 
   // 根据当前工作目录中的 `mode` 加载 .env 文件
@@ -25,5 +25,14 @@ export default defineConfig(({ _command, mode }: ConfigEnv) => {
       reportCompressedSize: false, // 启用/禁用 gzip 压缩大小报告
     },
     plugins: setVitePlugins(),
+    optimizeDeps: {
+      include: [
+          `monaco-editor/esm/vs/language/json/json.worker`,
+          `monaco-editor/esm/vs/language/css/css.worker`,
+          `monaco-editor/esm/vs/language/html/html.worker`,
+          `monaco-editor/esm/vs/language/typescript/ts.worker`,
+          `monaco-editor/esm/vs/editor/editor.worker`,
+      ],
+    },
   }
 })

@@ -27,4 +27,8 @@ export const menu = [
     label: '函数式Modal',
     path: '/functionalModal',
   },
+  {
+    label: '在线代码运行',
+    path: '/codeRun',
+  },
 ]

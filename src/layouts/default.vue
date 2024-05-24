@@ -28,7 +28,7 @@ import { menu } from '@/menu'
                 <n-message-provider>
                   <router-view v-slot="{ Component, route }" class="h-full flex-col-center ">
                     <transition
-                      name="fade-scale"
+                      name="fade-bottom"
                       mode="out-in"
                     >
                       <component :is="Component" :key="route.fullPath" />
@@ -45,17 +45,17 @@ import { menu } from '@/menu'
 </template>
 
 <style scoped>
-/* fade-scale */
-.fade-scale-leave-active,
-.fade-scale-enter-active {
-  transition: all 0.28s;
+/* fade-bottom */
+.fade-bottom-enter-active,
+.fade-bottom-leave-active {
+  transition: opacity 0.25s, transform 0.3s;
 }
-.fade-scale-enter-from {
+.fade-bottom-enter-from {
   opacity: 0;
-  transform: scale(1.2);
+  transform: translateY(-10%);
 }
-.fade-scale-leave-to {
+.fade-bottom-leave-to {
   opacity: 0;
-  transform: scale(0.8);
+  transform: translateY(10%);
 }
 </style>
