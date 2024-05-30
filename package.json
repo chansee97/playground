@@ -28,6 +28,8 @@
     "monaco-editor": "^0.48.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
+    "pixi-live2d-display": "^0.4.0",
+    "pixi.js": "^6.5.10",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
   },

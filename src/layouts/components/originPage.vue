@@ -2,7 +2,7 @@
 const route = useRoute()
 
 const originPath = computed(() => {
-  return `https://github.com/chansee97/playground/blob/main/src/pages${route.fullPath}.vue`
+  return `https://github.com/chansee97/playground/blob/main/src/pages${route.meta.file}`
 })
 </script>
 

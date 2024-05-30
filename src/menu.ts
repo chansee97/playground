@@ -1,7 +1,6 @@
 export const menu = [
   {
     label: 'ThreeJs',
-    path: null,
     children: [
       {
         label: '基本使用',
@@ -11,7 +10,6 @@ export const menu = [
   },
   {
     label: 'CSS/SVG',
-    path: null,
     children: [
       {
         label: '马赛克',
@@ -30,5 +28,9 @@ export const menu = [
   {
     label: '在线代码运行',
     path: '/codeRun',
+  },
+  {
+    label: 'live2D',
+    path: '/live2d',
   },
 ]

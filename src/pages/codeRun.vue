@@ -68,3 +68,11 @@ function splitDragEnd() {
     </n-split>
   </div>
 </template>
+
+<route lang="json">
+{
+  "meta": {
+    "file": "/codeRun.vue"
+  }
+}
+</route>

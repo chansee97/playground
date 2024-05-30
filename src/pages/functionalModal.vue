@@ -40,3 +40,11 @@ function showModal() {
     </NButton>
   </div>
 </template>
+
+<route lang="json">
+{
+  "meta": {
+    "file": "/functionalModal.vue"
+  }
+}
+</route>

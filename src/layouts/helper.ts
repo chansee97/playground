@@ -1,6 +1,6 @@
 import { RouterLink } from 'vue-router'
 
-export function handleMenuOptions(rowMenu) {
+export function handleMenuOptions(rowMenu: any[]): any {
   return rowMenu.map((i) => {
     return {
       label: i.path

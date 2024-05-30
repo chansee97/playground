@@ -63,3 +63,11 @@ img
   width: 300px;
 }
 </style>
+
+<route lang="json">
+{
+  "meta": {
+    "file": "/css&svg/mosaic.vue"
+  }
+}
+</route>

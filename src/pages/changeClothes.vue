@@ -11,3 +11,11 @@
 <style scoped>
 
 </style>
+
+<route lang="json">
+{
+  "meta": {
+    "file": "/changeClothes.vue"
+  }
+}
+</route>

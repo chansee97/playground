@@ -35,3 +35,11 @@ function go() {
     </div>
   </div>
 </template>
+
+<route lang="json">
+{
+  "meta": {
+    "file": "/threejs/basicUse.vue"
+  }
+}
+</route>
