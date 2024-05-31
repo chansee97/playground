@@ -11,10 +11,8 @@
     "vitesse"
   ],
   "scripts": {
-    "dev": "vite --mode dev --port 5200",
-    "dev:test": "vite --mode test ",
-    "dev:prod": "vite --mode prod ",
-    "build": "vite build --mode prod",
+    "dev": "vite --port 5200",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
