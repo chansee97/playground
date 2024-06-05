@@ -37,4 +37,8 @@ export const menu = [
     label: 'live2D',
     path: '/live2d',
   },
+  {
+    label: 'lottie',
+    path: '/lottie',
+  },
 ]
