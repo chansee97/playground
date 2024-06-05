@@ -6,6 +6,10 @@ export const menu = [
         label: '基本使用',
         path: '/threejs/basicUse',
       },
+      {
+        label: '模型',
+        path: '/threejs/model',
+      },
     ],
   },
   {

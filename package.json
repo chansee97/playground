@@ -28,6 +28,7 @@
     "pinia": "^2.1.7",
     "pixi-live2d-display": "^0.4.0",
     "pixi.js": "^6.5.10",
+    "three": "^0.165.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
   },
@@ -36,6 +37,7 @@
     "@iconify-json/icon-park-outline": "^1.1.15",
     "@types/node": "^20.12.7",
     "@types/nprogress": "^0.2.3",
+    "@types/three": "^0.165.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "eslint": "^9.1.1",
