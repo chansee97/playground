@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const imgPath = 'https://images.unsplash.com/photo-1716277420481-581a5380c225'
-
 function mosaicImg(selector: string, mosaicSize: number = 7) {
   const img: any = document.querySelector(selector)
   img.onload = function () {
@@ -31,13 +29,13 @@ onMounted(() => {
       <n-h3 class="text-center">
         原始图
       </n-h3>
-      <img :src="imgPath">
+      <img src="/img/example.jpg">
     </div>
     <div>
       <n-h3 class="text-center">
         svg马赛克
       </n-h3>
-      <img :src="imgPath" style="filter: url(#mosaic);">
+      <img src="/img/example.jpg" style="filter: url(#mosaic);">
       <svg height="0">
         <filter id="mosaic">
           <feFlood x="4" y="4" height="2" width="2" />
@@ -52,7 +50,7 @@ onMounted(() => {
       <n-h3 class="text-center">
         js&css马赛克
       </n-h3>
-      <img id="css-mosaic" :src="imgPath" crossorigin="anonymous" style="image-rendering: pixelated;">
+      <img id="css-mosaic" src="/img/example.jpg" crossorigin="anonymous" style="image-rendering: pixelated;">
     </div>
   </n-flex>
 </template>
