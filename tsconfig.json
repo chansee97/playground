@@ -13,6 +13,7 @@
     "types": [
       "vite/client",
       "vite-plugin-vue-layouts/client",
+      "unplugin-vue-router/client",
       "vite-plugin-pwa/client",
       "naive-ui/volar",
       "unplugin-icons/types/vue"

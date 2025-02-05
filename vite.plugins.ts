@@ -1,16 +1,15 @@
-import Unocss from 'unocss/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import Components from 'unplugin-vue-components/vite'
+import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import Layouts from 'vite-plugin-vue-layouts'
-import VueRouter from 'unplugin-vue-router/vite'
-import { VitePWA } from 'vite-plugin-pwa'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-import Icons from 'unplugin-icons/vite'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import VueRouter from 'unplugin-vue-router/vite'
+import { VitePWA } from 'vite-plugin-pwa'
 
 export function setVitePlugins() {
   const plugins = [
@@ -73,8 +72,6 @@ export function setVitePlugins() {
       },
     }),
 
-    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
-    Layouts(),
     VueRouter({
       extensions: ['.vue'],
       exclude: ['**/components/*.vue'],

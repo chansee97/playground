@@ -1,21 +1,23 @@
 import type { App } from 'vue'
 import NProgress from 'nprogress'
-import {
-  createMemoryHistory,
-  createRouter,
-  createWebHistory,
-} from 'vue-router/auto'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 
-import { setupLayouts } from 'virtual:generated-layouts'
+import {
+  routes,
+} from 'vue-router/auto-routes'
+
+// import { setupLayouts } from 'virtual:generated-layouts'
 
 const { VITE_BASE_URL } = import.meta.env
 
 function setupRouterGuard() {
   const router = createRouter({
     history: import.meta.env.SSR ? createMemoryHistory(VITE_BASE_URL) : createWebHistory(VITE_BASE_URL),
-    extendRoutes: (routes) => {
-      return setupLayouts(routes)
-    },
+    // pass the generated routes written by the plugin 🤖
+    routes,
+    // extendRoutes: (routes) => {
+    //   return setupLayouts(routes)
+    // },
   })
 
   router.beforeEach((to, from) => {

@@ -13,6 +13,27 @@ export const menu = [
     ],
   },
   {
+    label: 'WebGL',
+    children: [
+      {
+        label: '点击随机颜色点',
+        path: '/webgl/01',
+      },
+      {
+        label: '点击画三角形',
+        path: '/webgl/02',
+      },
+      {
+        label: '点击画线段',
+        path: '/webgl/03',
+      },
+      {
+        label: '渐变三角形',
+        path: '/webgl/04',
+      },
+    ],
+  },
+  {
     label: 'CSS/SVG',
     children: [
       {
