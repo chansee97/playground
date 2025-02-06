@@ -28,8 +28,20 @@ export const menu = [
         path: '/webgl/03',
       },
       {
-        label: '渐变三角形',
+        label: '点击画渐变三角形',
         path: '/webgl/04',
+      },
+      {
+        label: '正方形',
+        path: '/webgl/05',
+      },
+      {
+        label: '圆形',
+        path: '/webgl/06',
+      },
+      {
+        label: '环形',
+        path: '/webgl/07',
       },
     ],
   },

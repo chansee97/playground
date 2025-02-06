@@ -1,13 +1,13 @@
 <route lang="json">
 {
   "meta": {
-    "file": "/webgl/04.vue"
+    "file": "/webgl/06.vue"
   }
 }
 </route>
 
 <script setup>
-import { createBuffer, createProgram, createShader, randomColor } from './webgl-helper'
+import { createProgram, createShader } from './webgl-helper'
 
 // 顶点着色器
 const vertexShaderSource = `
@@ -44,9 +44,23 @@ void main() {
 // 初始化webGL上下文
 const canvas = useTemplateRef('canvas')
 
-// 写入缓冲区
-const positions = []
-const colors = []
+function createCircleVertex(x, y, radius, n) {
+  const positions = [x, y, 255, 255, 0, 1]
+  for (let i = 0; i <= n; i++) {
+    const angle = (i * Math.PI * 2) / n
+    positions.push(
+      x + radius * Math.sin(angle),
+      y + radius * Math.cos(angle),
+      255,
+      0,
+      0,
+      1,
+    )
+  }
+  return positions
+}
+
+const positions = createCircleVertex(100, 100, 50, 50)
 
 onMounted(() => {
   const gl = canvas.value.getContext('webgl')
@@ -58,47 +72,30 @@ onMounted(() => {
 
   const program = createProgram(gl, vertexShader, fragmentShader)
 
-  // 使用程序对象
   gl.useProgram(program)
-
-  const a_Position = gl.getAttribLocation(program, 'a_Position')
-  const a_Color = gl.getAttribLocation(program, 'a_Color')
 
   const a_Screen_Size = gl.getAttribLocation(program, 'a_Screen_Size')
   gl.vertexAttrib2f(a_Screen_Size, canvas.value.width, canvas.value.height)
 
-  // 绑定缓冲区
-  const positionBuffer = createBuffer(gl, a_Position)
-  const colorBuffer = createBuffer(gl, a_Color, { size: 4 })
+  const buffer = gl.createBuffer()
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
 
-  // 渲染函数
+  const a_Position = gl.getAttribLocation(program, 'a_Position')
+  const a_Color = gl.getAttribLocation(program, 'a_Color')
+  gl.enableVertexAttribArray(a_Position)
+  gl.enableVertexAttribArray(a_Color)
+  // 设置 a_Position 属性从缓冲区读取数据方式
+  gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 24, 0)
+  // 设置 a_Color 属性从缓冲区读取数据方式
+  gl.vertexAttribPointer(a_Color, 4, gl.FLOAT, false, 24, 8)
+
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
+
+  /* 渲染 */
   function render(gl) {
-    // 用上一步设置的清空画布颜色清空画布。
     gl.clear(gl.COLOR_BUFFER_BIT)
-    if (positions.length > 0) {
-      gl.drawArrays(gl.TRIANGLES, 0, positions.length / 2)
-    }
+    gl.drawArrays(gl.TRIANGLE_FAN, 0, positions.length / 6)
   }
-
-  canvas.value.addEventListener('click', (e) => {
-    const x = e.offsetX
-    const y = e.offsetY
-    positions.push(x, y)
-
-    const color = randomColor()
-    colors.push(color.r, color.g, color.b, color.a)
-
-    if (positions.length % 6 === 0) {
-      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
-
-      gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer)
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW)
-
-      render(gl)
-    }
-  })
-
   render(gl)
 })
 </script>
@@ -108,7 +105,3 @@ onMounted(() => {
     <canvas ref="canvas" width="800" height="800" />
   </n-flex>
 </template>
-
-<style scoped>
-
-</style>
