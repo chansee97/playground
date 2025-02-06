@@ -50,7 +50,7 @@ onUnmounted(() => {
 <route lang="json">
 {
   "meta": {
-    "file": "/lottie.vue"
+    "file": "/other/lottie.vue"
   }
 }
 </route>

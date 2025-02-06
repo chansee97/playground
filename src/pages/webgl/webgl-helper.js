@@ -21,24 +21,30 @@ export function createBuffer(gl, attribute, options = {}) {
   return buffer
 }
 
-export function createProgram(gl, vertexShaderSource, fragmentShaderSource) {
-  const vertexShader = gl.createShader(gl.VERTEX_SHADER)
-  gl.shaderSource(vertexShader, vertexShaderSource)
-  gl.compileShader(vertexShader)
-  const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER)
-  gl.shaderSource(fragmentShader, fragmentShaderSource)
-  gl.compileShader(fragmentShader)
+export function createShader(gl, type, source) {
+  const shader = gl.createShader(type)
+  gl.shaderSource(shader, source)
+  gl.compileShader(shader)
+  const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS)
+  if (success) {
+    return shader
+  }
+  console.warn(gl.getShaderInfoLog(shader))
+  gl.deleteShader(shader)
+}
 
+export function createProgram(gl, vertexShader, fragmentShader) {
   const program = gl.createProgram()
   gl.attachShader(program, vertexShader)
   gl.attachShader(program, fragmentShader)
   gl.linkProgram(program)
-
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    throw new Error(`Could not link program: ${gl.getProgramInfoLog(program)}`)
+  const success = gl.getProgramParameter(program, gl.LINK_STATUS)
+  if (success) {
+    return program
   }
 
-  return program
+  console.warn(gl.getProgramInfoLog(program))
+  gl.deleteProgram(program)
 }
 
 export function randomColor() {

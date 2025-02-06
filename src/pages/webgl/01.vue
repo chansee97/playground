@@ -117,7 +117,7 @@ onMounted(() => {
 
 <template>
   <n-flex justify="center">
-    <canvas ref="canvas" width="1000" height="1000" />
+    <canvas ref="canvas" width="800" height="800" />
   </n-flex>
 </template>
 

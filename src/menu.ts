@@ -43,8 +43,17 @@ export const menu = [
     ],
   },
   {
-    label: '在线换装',
-    path: '/changeClothes',
+    label: '其他',
+    children: [
+      {
+        label: 'live2D',
+        path: '/other/live2d',
+      },
+      {
+        label: 'lottie',
+        path: '/other/lottie',
+      },
+    ],
   },
   {
     label: '函数式Modal',
@@ -54,12 +63,5 @@ export const menu = [
     label: '在线代码运行',
     path: '/codeRun',
   },
-  {
-    label: 'live2D',
-    path: '/live2d',
-  },
-  {
-    label: 'lottie',
-    path: '/lottie',
-  },
+
 ]

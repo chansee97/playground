@@ -7,7 +7,7 @@
 </route>
 
 <script setup>
-import { createBuffer, createProgram, randomColor } from './webgl-helper'
+import { createBuffer, createProgram, createShader, randomColor } from './webgl-helper'
 
 // 顶点着色器
 const vertexShaderSource = `
@@ -51,19 +51,12 @@ const colors = []
 onMounted(() => {
   const gl = canvas.value.getContext('webgl')
 
-  // 渲染函数
   gl.clearColor(0, 0, 0, 1.0)
-  function render(gl) {
-    // 用上一步设置的清空画布颜色清空画布。
-    gl.clear(gl.COLOR_BUFFER_BIT)
-    if (positions.length <= 0) {
-      return
-    }
-    // 因为我们要绘制 N 个点，所以执行 N 次顶点绘制操作。
-    gl.drawArrays(gl.TRIANGLES, 0, positions.length / 2)
-  }
 
-  const program = createProgram(gl, vertexShaderSource, fragmentShaderSource)
+  const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
+  const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
+
+  const program = createProgram(gl, vertexShader, fragmentShader)
 
   // 使用程序对象
   gl.useProgram(program)
@@ -77,6 +70,17 @@ onMounted(() => {
   // 绑定缓冲区
   const positionBuffer = createBuffer(gl, a_Position)
   const colorBuffer = createBuffer(gl, a_Color, { size: 4 })
+
+  // 渲染函数
+  function render(gl) {
+    // 用上一步设置的清空画布颜色清空画布。
+    gl.clear(gl.COLOR_BUFFER_BIT)
+    if (positions.length <= 0) {
+      return
+    }
+    // 因为我们要绘制 N 个点，所以执行 N 次顶点绘制操作。
+    gl.drawArrays(gl.TRIANGLES, 0, positions.length / 2)
+  }
 
   canvas.value.addEventListener('click', (e) => {
     const x = e.offsetX
@@ -103,7 +107,7 @@ onMounted(() => {
 
 <template>
   <n-flex justify="center">
-    <canvas ref="canvas" width="1000" height="1000" />
+    <canvas ref="canvas" width="800" height="800" />
   </n-flex>
 </template>
 

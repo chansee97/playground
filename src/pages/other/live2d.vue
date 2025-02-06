@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import * as PIXI from 'pixi.js'
 import { Live2DModel } from 'pixi-live2d-display'
+import * as PIXI from 'pixi.js'
 
 const message = useMessage()
 
@@ -309,7 +309,7 @@ async function playMotion(group: string, index: number) {
 <route lang="json">
 {
   "meta": {
-    "file": "/live2d.vue"
+    "file": "/other/live2d.vue"
   }
 }
 </route>
