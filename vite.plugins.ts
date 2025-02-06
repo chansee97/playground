@@ -9,7 +9,6 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
-import { VitePWA } from 'vite-plugin-pwa'
 
 export function setVitePlugins() {
   const plugins = [
@@ -76,39 +75,6 @@ export function setVitePlugins() {
       extensions: ['.vue'],
       exclude: ['**/components/*.vue'],
       dts: 'src/types/typed-router.d.ts',
-    }),
-
-    // https://github.com/antfu/vite-plugin-pwa
-    VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: [
-        'favicon.svg',
-        'robots.txt',
-        'safari-pinned-tab.png',
-      ],
-      manifest: {
-        name: 'Virtuoso',
-        short_name: 'Virtuoso',
-        theme_color: '#A3DCC3',
-        icons: [
-          {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
-          },
-        ],
-      },
     }),
   ]
   return plugins
