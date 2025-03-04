@@ -43,6 +43,10 @@ export const menu = [
         label: '环形',
         path: '/webgl/07',
       },
+      {
+        label: '贴图',
+        path: '/webgl/08',
+      },
     ],
   },
   {

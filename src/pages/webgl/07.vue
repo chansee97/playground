@@ -7,7 +7,7 @@
 </route>
 
 <script setup>
-import { createProgram, createShader } from './webgl-helper'
+import { createProgram, createShader, randomColor } from './webgl-helper'
 
 // 顶点着色器
 const vertexShaderSource = `
@@ -44,23 +44,48 @@ void main() {
 // 初始化webGL上下文
 const canvas = useTemplateRef('canvas')
 
-function createCircleVertex(x, y, radius, n) {
-  const positions = [x, y, 255, 255, 0, 1]
+function createRingVertex(x, y, innerRadius, outerRadius, n) {
+  const positions = []
+  let color = randomColor()
   for (let i = 0; i <= n; i++) {
+    if (i % 2 === 0) {
+      color = randomColor()
+    }
     const angle = (i * Math.PI * 2) / n
     positions.push(
-      x + radius * Math.sin(angle),
-      y + radius * Math.cos(angle),
-      255,
-      0,
-      0,
+      x + innerRadius * Math.sin(angle),
+      y + innerRadius * Math.cos(angle),
+      color.r,
+      color.g,
+      color.b,
+      1,
+    )
+    positions.push(
+      x + outerRadius * Math.sin(angle),
+      y + outerRadius * Math.cos(angle),
+      color.r,
+      color.g,
+      color.b,
       1,
     )
   }
-  return positions
+  const indices = []
+  for (let i = 0; i < n; i++) {
+    const p0 = i * 2
+    const p1 = i * 2 + 1
+    let p2 = (i + 1) * 2 + 1
+    let p3 = (i + 1) * 2
+    if (i === n - 1) {
+      p2 = 1
+      p3 = 0
+    }
+    indices.push(p0, p1, p2, p2, p3, p0)
+  }
+  return { positions, indices }
 }
 
-const positions = createCircleVertex(100, 100, 50, 50)
+const vertex = createRingVertex(100, 100, 20, 80, 100)
+const positions = vertex.positions
 
 onMounted(() => {
   const gl = canvas.value.getContext('webgl')
@@ -91,10 +116,19 @@ onMounted(() => {
 
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
 
+  // 定义绘制索引数组
+  const indices = vertex.indices
+  // 创建索引缓冲区
+  const indicesBuffer = gl.createBuffer()
+  // 绑定索引缓冲区
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indicesBuffer)
+  // 向索引缓冲区传递索引数据
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW)
+
   /* 渲染 */
   function render(gl) {
     gl.clear(gl.COLOR_BUFFER_BIT)
-    gl.drawArrays(gl.TRIANGLE_FAN, 0, positions.length / 6)
+    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0)
   }
   render(gl)
 })
