@@ -69,6 +69,10 @@ export const menu = [
         label: 'lottie',
         path: '/other/lottie',
       },
+      {
+        label: 'table导出',
+        path: '/other/tableExport',
+      },
     ],
   },
   {
