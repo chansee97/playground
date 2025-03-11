@@ -38,7 +38,7 @@ defineExpose({
       <th>
         公司
       </th>
-      <th>
+      <th colspan="2" class="w-15em">
         项目
       </th>
       <th>
@@ -63,6 +63,9 @@ defineExpose({
         供方
       </th>
       <th>
+        地址
+      </th>
+      <th>
         备注
       </th>
     </tr>
@@ -78,7 +81,7 @@ defineExpose({
       <td>
         销售单位简称
       </td>
-      <td>
+      <td colspan="2">
         项目名称
       </td>
       <td>
@@ -94,31 +97,79 @@ defineExpose({
         南钢
       </td>
       <td>
-        1
+        16
       </td>
       <td>
-        2.05
+        34.128
       </td>
       <td>
         供应商简称
+      </td>
+      <td>
+        **市**县（区）
       </td>
       <td>
         备注
       </td>
     </tr>
 
+    <!-- 合计 -->
     <tr>
-      <td colspan="12" class="font-bold">
-        业务员姓名联系电话（请带回单）项目地址（销售合同地址）
+      <td>
+        合计
       </td>
+      <td />
+      <td />
+      <td colspan="3">
+        业务员姓名联系电话
+      </td>
+      <td />
+      <td />
+      <td />
+      <td />
+      <td>
+        34.128
+      </td>
+      <td />
+      <td />
+      <td />
     </tr>
     <tr>
-      <td colspan="12" class="text-left! bg-[#FBE7D7]">
+      <td>
+        运输
+      </td>
+      <td class="c-[#f00]">
+        钢晨
+      </td>
+      <td>
+        25
+      </td>
+      <td />
+      <td class="w-4em">
+        车号
+      </td>
+      <td colspan="2">
+        *********
+      </td>
+      <td colspan="2">
+        有效期
+      </td>
+      <td>
+        1天
+      </td>
+      <td />
+      <td />
+      <td />
+      <td />
+    </tr>
+
+    <tr>
+      <td colspan="14" class="text-left! bg-[#FBE7D7]">
         子分公司：所属子分公司（集采服务事业部、江淮公司等）
       </td>
     </tr>
     <tr>
-      <td colspan="12" class="text-left! bg-[#FBE7D7]">
+      <td colspan="14" class="text-left! bg-[#FBE7D7]">
         物资系统申请单编号：SP2023-12-01018
       </td>
     </tr>

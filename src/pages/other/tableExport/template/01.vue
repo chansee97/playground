@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import html2canvas from 'html2canvas'
+import 'table2excel'
+
 const tableRef = useTemplateRef('tableRef')
 
 const tableData = ref({
   orderNo: 'RCV-2023-0001',
+  transportType: '水运',
   productList: [
     {
       id: 1,
@@ -16,6 +20,26 @@ const tableData = ref({
     },
   ],
   remarked: '商品基本完好，2把办公椅有轻微损坏，已与供应商协商更换。',
+})
+
+function exportImage() {
+  html2canvas(tableRef.value, { scale: 2 }).then((canvas) => {
+    const link = document.createElement('a')
+    link.download = '收货单' // 指定下载的文件名
+    link.href = canvas.toDataURL()
+    link.click() // 模拟点击下载
+  })
+}
+function exportExcel() {
+  const Table2Excel = window.Table2Excel
+
+  const table2excel = new Table2Excel()
+  table2excel.export(tableRef.value)
+}
+
+defineExpose({
+  exportImage,
+  exportExcel,
 })
 </script>
 
@@ -68,7 +92,21 @@ const tableData = ref({
         运输方式
       </td>
       <td>
-        直发 库提 水运
+        <!-- 直发 库提 水运 -->
+        <div class="flex">
+          <div>
+            <input id="直发" v-model="tableData.transportType" type="radio" name="运输方式" value="直发">
+            <label for="直发">直发</label>
+          </div>
+          <div>
+            <input id="库提" v-model="tableData.transportType" type="radio" name="运输方式" value="库提">
+            <label for="库提">库提</label>
+          </div>
+          <div>
+            <input id="水运" v-model="tableData.transportType" type="radio" name="运输方式" value="水运">
+            <label for="水运">水运</label>
+          </div>
+        </div>
       </td>
     </tr>
     <!-- 表头行 -->
