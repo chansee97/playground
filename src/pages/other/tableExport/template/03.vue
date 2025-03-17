@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import html2canvas from 'html2canvas'
-import 'table2excel'
+import { utils, writeFileXLSX } from 'xlsx'
 
 const tableRef = useTemplateRef('tableRef')
 
@@ -13,10 +13,8 @@ function exportImage() {
   })
 }
 function exportExcel() {
-  const Table2Excel = window.Table2Excel
-
-  const table2excel = new Table2Excel()
-  table2excel.export(tableRef.value)
+  const wb = utils.table_to_book(tableRef.value)
+  writeFileXLSX(wb, `file.xlsx`)
 }
 
 defineExpose({
