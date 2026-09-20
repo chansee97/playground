@@ -1,0 +1,26 @@
+{
+  "name": "@playground/demo-table-export",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "表格导出演示",
+  "exports": {
+    "./demo.config": "./demo.config.ts"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "naive-ui": "catalog:",
+    "xlsx": "^0.18.5"
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

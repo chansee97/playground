@@ -1,0 +1,54 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "vue"
+  ],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "env": {
+    "browser": true,
+    "es2024": true
+  },
+  "options": {
+    /* 开启类型感知规则（依赖 oxlint-tsgolint） */
+    "typeAware": true
+  },
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/public/**",
+    "**/typed-router.d.ts"
+  ],
+  "rules": {
+    "no-console": "off",
+    /* WebGL / Three.js 示例中故意用同名变量接收参数，关闭该规则以减少噪音 */
+    "no-shadow": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.{ts,tsx,vue}"
+      ],
+      "rules": {
+        /* Vue 编译器宏（defineProps / defineModel / withDefaults 等）不是运行时变量，关闭 no-undef 避免误报 */
+        "no-undef": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.vue"
+      ],
+      "rules": {
+        /* SFC 中的 <script> 块会在遇到 </script> 时提前结束，
+           因此模板字符串里必须写成 <\/script>，这里关闭无用转义检查 */
+        "no-useless-escape": "off"
+      }
+    }
+  ]
+}

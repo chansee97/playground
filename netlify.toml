@@ -1,6 +1,7 @@
 [build]
-publish = "dist"
-command = "npm run build"
+base = "."
+command = "pnpm --filter playground build"
+publish = "apps/playground/dist"
 
 [build.environment]
 NODE_VERSION = "20"

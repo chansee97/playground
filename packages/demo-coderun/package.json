@@ -1,0 +1,27 @@
+{
+  "name": "@playground/demo-coderun",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "在线代码运行演示（Monaco Editor）",
+  "exports": {
+    "./demo.config": "./demo.config.ts"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@vueuse/core": "catalog:",
+    "monaco-editor": "^0.56.0",
+    "naive-ui": "catalog:"
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

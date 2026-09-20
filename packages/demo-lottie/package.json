@@ -1,0 +1,25 @@
+{
+  "name": "@playground/demo-lottie",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Lottie 动画演示",
+  "exports": {
+    "./demo.config": "./demo.config.ts"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "lottie-web": "^5.13.0",
+    "naive-ui": "catalog:"
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

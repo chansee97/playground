@@ -1,0 +1,26 @@
+{
+  "name": "@playground/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "统一 UI 层：naive-ui 供应商配置、原子化 CSS 预设与快捷类",
+  "exports": {
+    ".": "./src/index.ts",
+    "./uno": "./src/uno.ts"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "peerDependencies": {
+    "naive-ui": "catalog:",
+    "unocss": "catalog:",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "naive-ui": "catalog:",
+    "typescript": "catalog:",
+    "unocss": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@playground/utils",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "通用层：composables、HTTP 客户端与相关类型",
+  "exports": {
+    ".": "./src/index.ts",
+    "./http": "./src/http/index.ts"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@vueuse/core": "catalog:",
+    "axios": "^1.20.0"
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

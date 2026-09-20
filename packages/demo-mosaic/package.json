@@ -1,0 +1,25 @@
+{
+  "name": "@playground/demo-mosaic",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CSS / SVG / Canvas 马赛克演示",
+  "exports": {
+    "./demo.config": "./demo.config.ts"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "naive-ui": "catalog:"
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

@@ -1,0 +1,57 @@
+<script setup lang="ts">
+import { BoxGeometry, Mesh, MeshBasicMaterial, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { onMounted, onUnmounted, ref } from 'vue'
+
+const threeRef = ref<HTMLElement>()
+let renderer: WebGLRenderer | null = null
+
+onMounted(() => {
+  const { width, height } = threeRef.value!.getBoundingClientRect()
+
+  const scene = new Scene()
+
+  const camera = new PerspectiveCamera(75, width / height, 0.1, 1000)
+  camera.position.z = 5
+
+  const webglRenderer = new WebGLRenderer()
+  webglRenderer.setSize(width, height)
+  renderer = webglRenderer
+
+  const geometry = new BoxGeometry(1, 1, 1)
+  const material = new MeshBasicMaterial({ color: 0x00FF00 })
+  const cube = new Mesh(geometry, material)
+  scene.add(cube)
+
+  const controls = new OrbitControls(camera, webglRenderer.domElement)
+  controls.target.set(0, 0, 0) // 设定中心点
+  controls.update(0) // 重新设置轨道，相当于刷新
+
+  function animate() {
+    requestAnimationFrame(animate)
+    cube.rotation.x += 0.01
+    cube.rotation.y += 0.01
+    webglRenderer.render(scene, camera)
+  }
+  threeRef.value!.appendChild(webglRenderer.domElement)
+  animate()
+})
+
+onUnmounted(() => {
+  renderer?.dispose()
+})
+</script>
+
+<template>
+  <div ref="threeRef" class="flex-col-center gap-2em">
+    <!-- <div class="h-full" /> -->
+  </div>
+</template>
+
+<route lang="json">
+{
+  "meta": {
+    "title": "基本使用"
+  }
+}
+</route>

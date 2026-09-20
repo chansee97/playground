@@ -1,0 +1,42 @@
+diff --git a/dist/cubism.es.js b/dist/cubism.es.js
+index 59f0ad2da1457e9dc461140b0ed36b68a4d20aa4..ea51573be0d1543a064d7dfedb1ac97c27ae99b9 100644
+--- a/dist/cubism.es.js
++++ b/dist/cubism.es.js
+@@ -8667,8 +8667,15 @@ class CubismMotion extends ACubismMotion {
+       CubismMotionSegment,
+       true
+     );
++    // 一部のモデルの motion3.json は Meta.TotalPointCount が実際より小さく、
++    // そのまま確保すると解析中に領域外へ書き込んで例外になる。
++    // セグメントの総要素数（1 点は必ず 2 要素以上を消費する）を上限として十分な領域を確保する。
++    let totalSegmentValues = 0;
++    for (let curveIndex = 0; curveIndex < json.getMotionCurveCount(); ++curveIndex) {
++      totalSegmentValues += json.getMotionCurveSegmentCount(curveIndex);
++    }
+     this._motionData.points.updateSize(
+-      json.getMotionTotalPointCount(),
++      Math.max(json.getMotionTotalPointCount(), totalSegmentValues),
+       CubismMotionPoint,
+       true
+     );
+diff --git a/dist/index.es.js b/dist/index.es.js
+index 710e75cc423be5f6d5c3fbea4b90e19a7ed0b662..9672be3b9a85808faa9fca29d427e0ab88b83e90 100644
+--- a/dist/index.es.js
++++ b/dist/index.es.js
+@@ -9588,8 +9588,15 @@ class CubismMotion extends ACubismMotion {
+       CubismMotionSegment,
+       true
+     );
++    // 一部のモデルの motion3.json は Meta.TotalPointCount が実際より小さく、
++    // そのまま確保すると解析中に領域外へ書き込んで例外になる。
++    // セグメントの総要素数（1 点は必ず 2 要素以上を消費する）を上限として十分な領域を確保する。
++    let totalSegmentValues = 0;
++    for (let curveIndex = 0; curveIndex < json.getMotionCurveCount(); ++curveIndex) {
++      totalSegmentValues += json.getMotionCurveSegmentCount(curveIndex);
++    }
+     this._motionData.points.updateSize(
+-      json.getMotionTotalPointCount(),
++      Math.max(json.getMotionTotalPointCount(), totalSegmentValues),
+       CubismMotionPoint,
+       true
+     );

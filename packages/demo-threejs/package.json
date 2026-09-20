@@ -1,0 +1,27 @@
+{
+  "name": "@playground/demo-threejs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ThreeJs 演示",
+  "exports": {
+    "./demo.config": "./demo.config.ts"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@vueuse/core": "catalog:",
+    "naive-ui": "catalog:",
+    "three": "^0.186.0"
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "typescript": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

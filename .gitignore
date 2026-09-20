@@ -25,7 +25,5 @@ stats.html
 *.sln
 *.sw?
 
-components.d.ts
-auto-imports.d.ts
 typed-router.d.ts
 *-lock.yaml

@@ -1,23 +1,13 @@
 {
+  // 各包的 TS 基础配置：只放通用编译选项，不含 include
+  // 具体包通过 "extends": "../../tsconfig.json" 继承后自行补充 paths / types / include
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
-    "baseUrl": ".",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "moduleResolution": "node",
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "types": [
-      "vite/client",
-      "vite-plugin-vue-layouts/client",
-      "unplugin-vue-router/client",
-      "vite-plugin-pwa/client",
-      "naive-ui/volar",
-      "unplugin-icons/types/vue"
-    ],
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
@@ -25,10 +15,8 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "skipLibCheck": true
-  },
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  }
 }

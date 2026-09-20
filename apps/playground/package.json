@@ -1,0 +1,35 @@
+{
+  "name": "playground",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "主包：统一 UI、布局、路由聚合与构建入口",
+  "scripts": {
+    "dev": "vite --port 5200",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "sizecheck": "npx vite-bundle-visualizer"
+  },
+  "dependencies": {
+    "@playground/ui": "workspace:*",
+    "@unocss/reset": "catalog:",
+    "naive-ui": "catalog:",
+    "nprogress": "catalog:",
+    "pinia": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "@iconify-json/icon-park-outline": "^1.2.4",
+    "@types/node": "catalog:",
+    "@types/nprogress": "^0.2.3",
+    "@vitejs/plugin-vue": "^6.0.9",
+    "typescript": "catalog:",
+    "unocss": "catalog:",
+    "unplugin-icons": "^24.0.0",
+    "vite": "catalog:",
+    "vite-bundle-visualizer": "^1.2.1",
+    "vue-tsc": "catalog:"
+  }
+}
