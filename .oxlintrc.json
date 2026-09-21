@@ -23,7 +23,10 @@
     "**/dist/**",
     "**/node_modules/**",
     "**/public/**",
-    "**/typed-router.d.ts"
+    "**/typed-router.d.ts",
+    /* demo-markdown 的 src/core 是从 milkup 迁移过来的编辑器内核（MIT），
+       保持上游源码形态便于后续跟进对比，不做本地风格改写 */
+    "packages/demo-markdown/src/core/**"
   ],
   "rules": {
     "no-console": "off",

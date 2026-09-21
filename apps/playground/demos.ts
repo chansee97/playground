@@ -7,6 +7,7 @@
 import codeRun from '../../packages/demo-coderun/demo.config.ts'
 import live2d from '../../packages/demo-live2d/demo.config.ts'
 import lottie from '../../packages/demo-lottie/demo.config.ts'
+import markdown from '../../packages/demo-markdown/demo.config.ts'
 import mosaic from '../../packages/demo-mosaic/demo.config.ts'
 import tableExport from '../../packages/demo-table-export/demo.config.ts'
 import threejs from '../../packages/demo-threejs/demo.config.ts'
@@ -27,5 +28,6 @@ export const demos: DemoDescriptor[] = [
   live2d,
   lottie,
   tableExport,
+  markdown,
   codeRun,
 ]
