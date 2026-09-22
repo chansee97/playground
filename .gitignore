@@ -27,3 +27,4 @@ stats.html
 
 typed-router.d.ts
 *-lock.yaml
+!pnpm-lock.yaml

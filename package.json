@@ -3,6 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@12.3.4",
   "description": "Playground monorepo：主包负责统一 UI 与工程规范，各演示在独立包中实现",
   "scripts": {
     "dev": "pnpm --filter playground dev",
